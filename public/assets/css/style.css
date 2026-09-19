@@ -24,10 +24,17 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html {
+  /* Evita el zoom por doble toque y controla el escalado táctil en iOS */
+  touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   -webkit-user-select: none;
   user-select: none;
   overflow-x: hidden;
+  width: 100%;
 }
 
 img {
@@ -46,6 +53,7 @@ ul {
 .header-container {
   background-color: var(--bg-dark);
   color: var(--text-light);
+  width: 100%;
 }
 
 .first-header-container {
@@ -54,7 +62,7 @@ ul {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5% 5%;
+  padding: 1% 5%;
   border-bottom: 1px solid var(--border-dark);
 }
 
@@ -84,7 +92,7 @@ ul {
   cursor: pointer;
 }
 
-/* Barra informativa superior si existe */
+/* Barra informativa superior */
 .main-header {
   background-color: var(--bg-white);
   display: flex;
@@ -114,7 +122,7 @@ ul {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 6% 5%;
+  padding: 5%;
   gap: 40px;
 }
 
@@ -126,7 +134,7 @@ ul {
 }
 
 .left-card-container h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4vw, 3rem);
   color: var(--text-light);
   font-weight: 900;
   line-height: 1.15;
@@ -134,9 +142,9 @@ ul {
 }
 
 .left-card-container p {
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
-  line-height: 1.6;
-  max-width: 550px;
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 500px;
   margin-bottom: 24px;
 }
 
@@ -152,7 +160,7 @@ ul {
   color: var(--text-light);
   border-radius: 9px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 18px;
   transition: background-color 0.2s ease-in-out;
   text-decoration: none;
 }
@@ -190,7 +198,7 @@ ul {
 }
 
 .first-section-container h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-size: 2rem;
   color: var(--text-dark);
   text-align: center;
 }
@@ -232,12 +240,12 @@ ul {
   display: flex;
   justify-content: center;
   background-color: var(--bg-quote);
-  padding: 80px 5%;
+  padding: 70px 5%;
 }
 
 .childof-second-section {
-  max-width: 800px;
   width: 100%;
+  max-width: 800px;
 }
 
 .childof-second-section p {
@@ -251,7 +259,7 @@ ul {
 .childof-second-section h3 {
   display: flex;
   justify-content: flex-end;
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-size: 1.2rem;
   color: var(--text-dark);
   font-weight: 700;
 }
@@ -261,7 +269,7 @@ ul {
   display: flex;
   justify-content: center;
   background-color: var(--bg-white);
-  padding: 80px 5%;
+  padding: 60px 5%;
 }
 
 .childof-third-section {
@@ -272,24 +280,25 @@ ul {
   color: var(--text-alt-light);
   background-color: var(--primary-blue-active);
   border-radius: 14px;
-  padding: 45px 60px;
+  padding: 40px 50px;
   width: 100%;
   max-width: 1050px;
   gap: 24px;
 }
 
 .childof-third-section h3 {
-  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
-  margin-bottom: 6px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
 }
 
 .childof-third-section p {
-  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-size: 1rem;
   color: var(--text-alt-light);
+  line-height: 1.4;
 }
 
 .childof-third-section button {
-  padding: 12px 32px;
+  padding: 12px 28px;
   width: auto;
   white-space: nowrap;
   border-radius: 9px;
@@ -310,17 +319,11 @@ ul {
   background-color: var(--primary-blue-active);
 }
 
-/* Footer corregido con variables */
+/* Footer */
 footer {
   background-color: var(--bg-footer);
   color: var(--text-gray);
-  padding: 60px 5% 30px 5%;
-  font-size: 0.9rem;
-}
-footer {
-  background-color: var(--bg-footer);
-  color: var(--text-gray);
-  padding: 40px 10%;
+  padding: 50px 5% 30px 5%;
   font-size: 0.9rem;
 }
 
@@ -329,12 +332,23 @@ footer {
   justify-content: space-between;
   gap: 40px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  max-width: 1100px;
+  margin: 0 auto 30px auto;
+}
+
+.footer-brand {
+  max-width: 320px;
 }
 
 .footer-brand h3 {
   color: var(--bg-white);
+  font-size: 1.3rem;
   margin-bottom: 12px;
+}
+
+.footer-brand p {
+  color: var(--text-gray);
+  line-height: 1.5;
 }
 
 .footer-links {
@@ -366,4 +380,71 @@ footer {
   padding-top: 20px;
   text-align: center;
   font-size: 0.8rem;
+}
+
+/* Adaptación para pantallas móviles (iPhone 14 Pro y similares) */
+@media (max-width: 768px) {
+  .first-header-container {
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 5%;
+  }
+
+  .first-header-container ul {
+    gap: 16px;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .second-header-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 30px 5% 45px 5%;
+  }
+
+  .left-card-container {
+    align-items: center;
+  }
+
+  .left-card-container p {
+    max-width: 100%;
+  }
+
+  .first-section-container {
+    padding: 40px 5%;
+  }
+
+  .ga-container {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .childof-second-section p {
+    text-align: center;
+  }
+
+  .childof-second-section h3 {
+    justify-content: center;
+  }
+
+  .third-section-container {
+    padding: 40px 5%;
+  }
+
+  .childof-third-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .childof-third-section button {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 28px;
+  }
 }
